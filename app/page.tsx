@@ -24,7 +24,7 @@ const modules = [
   { id: "shipping", title: "航運術語與文件", time: "22 min", section: "course" as Section },
   { id: "cases", title: "GAM 業務情境", time: "20 min", section: "scenarios" as Section },
   { id: "math", title: "基本計算", time: "12 min", section: "scenarios" as Section },
-  { id: "radar", title: "近一年時事", time: "25 min", section: "news" as Section },
+  { id: "radar", title: "今日五則時事", time: "15 min", section: "news" as Section },
 ];
 
 const terms = [
@@ -42,74 +42,45 @@ const terms = [
   ["Rolled Cargo", "原訂貨物未裝上該航次，順延至後續船班。"],
 ];
 
-const news = {
-  shipping: [
-    {
-      date: "2026.07.03", tag: "航運趨勢", title: "海運仍承擔全球逾八成貨物貿易量",
-      body: "UNCTAD 指出，地緣衝突、氣候與關鍵水道中斷，正讓供應鏈韌性、港口效率與替代航線成為航商核心課題。",
-      impact: "面試語言：GAM 不只賣運價，也是在不確定環境中替客戶管理時效與風險。",
-      href: "https://unctad.org/news/maritime-summit-unctad-highlights-impact-disruptions",
-    },
-    {
-      date: "2026.01.01", tag: "法規", title: "新一批 IMO 航運安全規則生效",
-      body: "包含遺失貨櫃通報、部分新造貨櫃船配置電子橫搖儀等規範，反映安全、資料透明與船員福祉持續升級。",
-      impact: "考點：IMO 是國際海事組織；航運法規會轉化為船舶設備、流程與成本要求。",
-      href: "https://www.imo.org/en/mediacentre/pressbriefings/pages/raft-of-shipping-rules-in-force-from-1-january-2026.aspx",
-    },
-    {
-      date: "2025.09.24", tag: "市場", title: "運價波動成為新常態",
-      body: "UNCTAD《Review of Maritime Transport 2025》指出，紅海中斷、關稅措施、船隊供給與港口壓力共同加劇市場波動。",
-      impact: "考點：報價不是固定價目表，而是航線供需、燃油、風險與艙位的即時結果。",
-      href: "https://unctad.org/system/files/official-document/rmt2025_en.pdf",
-    },
-  ],
-  world: [
-    {
-      date: "2026.06.30", tag: "中東", title: "荷姆茲海峽逐步重啟，後座力仍在",
-      body: "UNCTAD 表示，逾百日中斷後，即使航行恢復，燃油、糧食、運輸合約與保險成本仍需要時間回落。",
-      impact: "因果鏈：海峽風險 → 油價與保險上升 → 船舶成本增加 → 附加費與運價承壓。",
-      href: "https://unctad.org/news/hormuz-reopening-may-calm-markets-vulnerable-economies-face-lasting-consequences",
-    },
-    {
-      date: "2026.03.19", tag: "貿易", title: "全球商品貿易成長預估放緩",
-      body: "WTO 預估 2026 年商品貿易成長將由 2025 年的 4.6% 放緩至 1.9%，前一年關稅前搶運造成的高基期是原因之一。",
-      impact: "因果鏈：關稅預期 → 提前拉貨 → 短期貨量與艙位變緊 → 後期需求可能轉弱。",
-      href: "https://www.wto.org/english/news_e/news26_e/stat_19mar26_329_e.htm",
-    },
-    {
-      date: "2025.08.08", tag: "關稅", title: "提前拉貨緩衝 2025 關稅衝擊",
-      body: "WTO 指出，美國進口商在關稅上調前集中進貨，推升第一季貿易；但更高關稅會壓抑後續需求。",
-      impact: "GAM 要能辨識一次性搶運與長期需求，不把短期高貨量誤判為永久成長。",
-      href: "https://www.wto.org/english/news_e/news25_e/tfore_08aug25_e.htm",
-    },
-  ],
-  wanhai: [
-    {
-      date: "2026.05.12", tag: "航線", title: "推出第二條洛杉磯直達航線",
-      body: "萬海持續擴充北美直達服務，並規劃 2026 年 9 月承租大阪港 C9 碼頭，強化日本核心市場布局。",
-      impact: "面試表述：以亞洲密集網路為根基，再審慎擴張遠洋直達與碼頭節點。",
-      href: "https://www.cdnspg.com/articles/67603",
-    },
-    {
-      date: "2026 Q1–Q4", tag: "船隊", title: "2026 年預計投入 7 艘新船、48,800 TEU",
-      body: "交通部航港局彙整顯示，包含 7,000 TEU 與 8,700 TEU 級船舶；首艘 7,000 TEU 船投入東地中海航線。",
-      impact: "新船可改善效率與網路彈性，但也要配合市場需求，避免供給過剩壓低運價。",
-      href: "https://www.motcmpb.gov.tw/Information/Detail/bbd5b8b0-eaec-414c-8814-d7cc2ea06ef5?NodeId=10131&SiteId=1",
-    },
-    {
-      date: "2025.09.26", tag: "客群", title: "深耕印度水產與冷鏈市場",
-      body: "萬海展示 -40°C 至 25°C 冷凍櫃解決方案，並以 IM2 航線串聯印度西岸、埃及與土耳其。",
-      impact: "客戶群不只一般出口商，也包含食品、水產與需溫控的高敏感貨主。",
-      href: "https://esg.wanhai.com/wanhai/news/213557431368d6659faccbb/list",
-    },
-  ],
-};
+// DAILY_NEWS_START — 每日 08:00 自動化只更新此區塊。
+const dailyNews = [
+  {
+    date: "2026.07.14", sourceName: "Maersk", tag: "市場動態", title: "拉丁美洲港口維持穩定，亞洲出口旺季延續",
+    body: "Maersk 7 月市場更新顯示，中美洲、加勒比海主要港口運作大致正常；亞洲至南美東岸的季節性貨量仍支撐穩定班次。",
+    impact: "亞洲旺季貨流維持 → 班次需求穩定 → 訂艙時仍需預留旺季艙位與轉運緩衝。",
+    href: "https://www.maersk.com/news/articles/2026/07/14/latin-america-market-update-july",
+  },
+  {
+    date: "2026.07.13", sourceName: "IMO", tag: "關鍵水道", title: "IMO 重申國際航道的通行權與安全標準",
+    body: "IMO 理事會重申，沿岸國對重要航道採取的交通管理措施，應符合《海上人命安全公約》等國際規範。",
+    impact: "航道管制變動 → 船期與保險不確定性上升 → 航商需要更快調整路線與客戶通知。",
+    href: "https://www.imo.org/en/mediacentre/pressbriefings/pages/imo-council-reaffirms-commitment-to-protecting-vital-shipping-lanes.aspx",
+  },
+  {
+    date: "2026.07.13", sourceName: "IMO", tag: "黑海安全", title: "黑海與亞速海商船攻擊事件再起",
+    body: "IMO 譴責近期針對民用商船的攻擊，並呼籲各方保障船員、船舶與國際航運安全。",
+    impact: "區域安全惡化 → 繞航、戰爭險與港口風險增加 → 交期與報價需加入更大安全係數。",
+    href: "https://www.imo.org/en/mediacentre/pressbriefings/pages/statement-on-attacks-in-black-sea-and-sea-of-azov.aspx",
+  },
+  {
+    date: "2026.07.13", sourceName: "Le Monde", tag: "荷姆茲海峽", title: "荷姆茲海峽通行量再受政策與安全風險擠壓",
+    body: "航跡資料顯示海峽通行船數偏低；美國宣布新的封鎖與航運收費措施後，油價與區域物流風險再度升溫。",
+    impact: "海峽風險升高 → 油價、保險與燃油成本上升 → 運價與附加費面臨調整壓力。",
+    href: "https://www.lemonde.fr/en/international/article/2026/07/13/trump-imposes-maritime-toll-in-strait-of-hormuz-as-ship-traffic-collapses_6755446_4.html",
+  },
+  {
+    date: "2026.07.01", sourceName: "IMO", tag: "自動航運", title: "首套全球自主船舶安全準則開始適用",
+    body: "IMO 的非強制性 MASS Code 於 7 月 1 日生效，為自主貨船的操作、安全與監管建立共同框架。",
+    impact: "自動化標準成形 → 船舶資料與遠端操作需求增加 → 航運服務競爭延伸至科技與風險管理。",
+    href: "https://www.imo.org/en/mediacentre/pressbriefings/pages/imo-adopts-mass-code.aspx",
+  },
+];
+// DAILY_NEWS_END
 
 export default function Home() {
   const [active, setActive] = useState<Section>("dashboard");
   const [done, setDone] = useState<string[]>([]);
   const [openTerm, setOpenTerm] = useState<number | null>(null);
-  const [newsTab, setNewsTab] = useState<keyof typeof news>("shipping");
   const [scenarioAnswer, setScenarioAnswer] = useState<string | null>(null);
   const [containers, setContainers] = useState(20);
   const [target, setTarget] = useState(500);
@@ -157,7 +128,7 @@ export default function Home() {
             <div className="hero-copy">
               <p className="eyebrow">顏文龍的面試準備艙橋 · UPDATED 2026.07.14</p>
               <h1>把你的溝通力，<br /><em>轉成航運商業力。</em></h1>
-              <p className="lead">你不需要在三天內變成航運系學生。目標是看懂一票貨、說清楚客戶影響，並像一位 GAM 那樣協調下一步。</p>
+              <p className="lead">一套為 7 月 17 日設計的閱讀路徑：先建立產業骨架，再練習把航運資訊轉譯成客戶可採取的下一步。</p>
               <div className="hero-actions">
                 <button className="primary" onClick={() => go("course")}>開始 90 分鐘速成課 <b>→</b></button>
                 <button className="text-button" onClick={() => go("news")}>先看考前時事</button>
@@ -190,7 +161,7 @@ export default function Home() {
               <div className="fit-item"><span>01</span><div><strong>AIESEC</strong><p>12 國跨文化協作 → 跨部門與跨國溝通</p></div></div>
               <div className="fit-item"><span>02</span><div><strong>富邦人壽</strong><p>需求分析與顧問式溝通 → Account development</p></div></div>
               <div className="fit-item"><span>03</span><div><strong>星巴克黑圍裙</strong><p>長期顧客經營與區組業績第一 → Relationship + target</p></div></div>
-              <blockquote>「我不是從零開始學業務；我是把既有的客戶經營能力，轉移到更國際、更複雜的物流場景。」</blockquote>
+              <div className="editorial-note"><span>POSITIONING</span><p>既有優勢不是航運術語，而是客戶經營。準備重點，是讓這項能力在國際物流場景中清楚可見。</p></div>
             </aside>
           </section>
         </div>
@@ -198,7 +169,7 @@ export default function Home() {
 
       {active === "wanhai" && (
         <div className="page content-page">
-          <PageIntro no="01" kicker="COMPANY INTELLIGENCE" title="認識萬海，不只背公司簡介" desc="面試官真正想知道的，是你能不能把公司歷史、航線選擇與客戶價值連成一條線。" />
+          <PageIntro no="01" kicker="COMPANY INTELLIGENCE" title="從公司沿革，讀懂航線策略" desc="時間軸、服務網路與客戶結構收在同一個視角，方便快速建立萬海的商業輪廓。" />
           <section className="chapter" id="history">
             <div className="chapter-title"><div><p className="eyebrow">01 — ORIGIN</p><h2>從原木船到全球貨櫃網路</h2></div>{completeButton("history")}</div>
             <div className="timeline">
@@ -237,7 +208,7 @@ export default function Home() {
 
       {active === "course" && (
         <div className="page content-page">
-          <PageIntro no="02" kicker="ZERO-TO-SHIPPING CRASH COURSE" title="90 分鐘，建立海運商業骨架" desc="先理解貨怎麼走、責任怎麼分，再記術語。每個概念都連回 GAM 會遇到的客戶問題。" />
+          <PageIntro no="02" kicker="ZERO-TO-SHIPPING CRASH COURSE" title="90 分鐘，建立海運商業骨架" desc="內容依貨物流向編排：角色、流程、責任與文件逐層展開，術語自然落在實際情境裡。" />
           <section className="chapter">
             <div className="chapter-title"><div><p className="eyebrow">MODULE 01 · 20 MIN</p><h2>一票出口貨，怎麼走到目的地？</h2></div>{completeButton("tradeflow")}</div>
             <div className="flow">
@@ -249,7 +220,7 @@ export default function Home() {
               <InfoCard n="C" title="Carrier / 船公司" text="提供船舶艙位、航線與運送服務；萬海就是 Carrier。" />
               <InfoCard n="R" title="Consignee / 進口商" text="接收貨物、辦理進口清關與目的地端提領。" />
             </div>
-            <div className="video-card"><div><span>WATCH · 05:07</span><h3>B/L 的角色與貨物交付流程</h3><p>看完要能用一句話說出提單的三個核心功能。</p></div>{source("https://forwarder-university.com/role-bl-revised-ver/", "觀看影片＋文章")}</div>
+            <div className="video-card"><div><span>WATCH · 05:07</span><h3>B/L 的角色與貨物交付流程</h3><p>閱讀焦點：提單如何連結收貨證明、運送關係與貨物交付。</p></div>{source("https://forwarder-university.com/role-bl-revised-ver/", "觀看影片＋文章")}</div>
           </section>
 
           <section className="chapter split-chapter">
@@ -280,14 +251,14 @@ export default function Home() {
 
       {active === "scenarios" && (
         <div className="page content-page">
-          <PageIntro no="03" kicker="ACCOUNT MANAGER SIMULATOR" title="不急著承諾，先把問題框對" desc="GAM 的價值在於釐清影響、整合資訊、提出選項，並讓客戶知道下一次更新會在何時。" />
+          <PageIntro no="03" kicker="ACCOUNT MANAGER SIMULATOR" title="先定義問題，再選擇回應" desc="每個案例拆成資訊、影響、選項與回覆節點，讓判斷順序一眼可讀。" />
           <section className="chapter scenario-section">
             <div className="chapter-title"><div><p className="eyebrow">CASE 01 · SERVICE RECOVERY</p><h2>船期延誤，客戶在電話裡非常生氣</h2></div>{completeButton("cases")}</div>
             <div className="case-layout">
               <div className="case-brief"><span>INCOMING CALL</span><blockquote>「這批零件晚到，我們客戶的產線可能停擺。你現在就告訴我，萬海要怎麼賠？」</blockquote><p>目前你只知道原船 ETA 延後 4 天，尚未確認延誤原因與可行替代方案。</p></div>
               <div className="choices">
                 {[['a','先道歉並承諾全額賠償，讓客戶冷靜。'],['b','先確認提單、貨況與實際衝擊，承諾一個明確回覆時間，同步查替代方案。'],['c','說明延誤是運務問題，請客戶直接找客服。']].map(([id,text]) => <button key={id} onClick={() => setScenarioAnswer(id)} className={scenarioAnswer === id ? (id === 'b' ? 'correct' : 'wrong') : ''}><span>{id.toUpperCase()}</span>{text}</button>)}
-                {scenarioAnswer && <div className={`feedback ${scenarioAnswer === 'b' ? 'good' : ''}`}><strong>{scenarioAnswer === 'b' ? '正確：先掌握事實與影響' : '這不是最佳做法'}</strong><p>{scenarioAnswer === 'b' ? '不做未授權承諾，也不把客戶推走。先建立單一窗口，再用時間點管理期待。' : '過早承諾可能超出權限；推責則會破壞信任。GAM 要接住問題並驅動內部協作。'}</p></div>}
+                {scenarioAnswer && <div className={`feedback ${scenarioAnswer === 'b' ? 'good' : ''}`}><strong>{scenarioAnswer === 'b' ? '建議路徑：先掌握事實與影響' : '此路徑風險較高'}</strong><p>{scenarioAnswer === 'b' ? '建立單一窗口，確認可行方案，再用明確時間點管理下一次更新。' : '過早承諾可能超出權限；直接轉介則會讓資訊與責任斷線。'}</p></div>}
               </div>
             </div>
             <div className="answer-framework"><div><b>1</b><strong>Listen</strong><span>承接情緒，確認真正損失</span></div><div><b>2</b><strong>Verify</strong><span>貨況、船期、原因與責任</span></div><div><b>3</b><strong>Coordinate</strong><span>找替代船期、轉運或其他選項</span></div><div><b>4</b><strong>Commit</strong><span>只承諾可做到的更新時間</span></div><div><b>5</b><strong>Close</strong><span>持續追蹤到案件結束</span></div></div>
@@ -315,28 +286,24 @@ export default function Home() {
 
       {active === "news" && (
         <div className="page content-page news-page">
-          <PageIntro no="04" kicker="12-MONTH NEWSROOM" title="把新聞讀成商業因果鏈" desc="涵蓋 2025.07—2026.07。每則只記三件事：發生什麼、影響哪個成本或貨量、GAM 要怎麼跟客戶說。" />
-          <div className="news-tabs">
-            <button className={newsTab === 'shipping' ? 'active' : ''} onClick={() => setNewsTab('shipping')}>航運時事</button>
-            <button className={newsTab === 'world' ? 'active' : ''} onClick={() => setNewsTab('world')}>國際情勢</button>
-            <button className={newsTab === 'wanhai' ? 'active' : ''} onClick={() => setNewsTab('wanhai')}>萬海動態</button>
-          </div>
+          <PageIntro no="04" kicker="DAILY TRANSPORT NEWSROOM" title="每天五則，掌握航運變化" desc="每天 08:00 更新。編輯範圍涵蓋海運、港口、跨境物流與國際交通，並把事件整理成可掃讀的影響鏈。" />
+          <div className="news-tabs update-bar"><span><i /> AUTO UPDATE</span><strong>2026.07.14 · 08:00 TPE</strong><small>5 STORIES</small></div>
           <section className="newsroom">
             <div className="news-lead">
-              <p className="eyebrow">THE BIG PICTURE</p>
-              <h2>{newsTab === 'shipping' ? '航運的關鍵字：波動與韌性' : newsTab === 'world' ? '國際情勢的關鍵字：搶運與水道風險' : '萬海的關鍵字：亞洲深耕、遠洋延伸'}</h2>
-              <p>{newsTab === 'shipping' ? '紅海與荷姆茲等瓶頸讓航程、燃油、保險與船舶供給同時變動；安全與減碳規則又提高長期投資需求。' : newsTab === 'world' ? '關稅會改變出貨時間；衝突會改變出貨路線。兩者都可能讓短期貨量與運價偏離正常季節性。' : '新船、碼頭與直達航線共同擴充網路，但策略仍強調以亞洲優勢為核心、審慎經營中遠洋。'}</p>
+              <p className="eyebrow">EDITOR&apos;S OVERVIEW</p>
+              <h2>今日焦點：航道安全重新主導成本預期</h2>
+              <p>黑海與荷姆茲海峽的安全訊號同步升高；另一端，亞洲出口旺季與自主船舶規範持續推進。短期看風險成本，長期看網路與技術。</p>
               <div className="causal"><span>事件</span><b>→</b><span>運能 / 成本</span><b>→</b><span>運價 / 船期</span><b>→</b><span>客戶決策</span></div>
             </div>
             <div className="article-list">
-              {news[newsTab].map((item, i) => <article key={item.title} className={i === 0 ? 'featured' : ''}><div className="article-meta"><time>{item.date}</time><span>{item.tag}</span></div><h3>{item.title}</h3><p>{item.body}</p><div className="impact"><b>WHY IT MATTERS</b>{item.impact}</div>{source(item.href, "原始報導")}</article>)}
+              {dailyNews.map((item, i) => <article key={item.title} className={i === 0 ? 'featured' : ''}><div className="article-meta"><time>{item.date}</time><span>{item.tag}</span><em>{item.sourceName}</em></div><h3>{item.title}</h3><p>{item.body}</p><div className="impact"><b>IMPACT CHAIN</b>{item.impact}</div>{source(item.href, "閱讀原文")}</article>)}
             </div>
           </section>
           <section className="chapter briefing">
-            <div className="chapter-title"><div><p className="eyebrow">60-SECOND BRIEFING</p><h2>如果主管問：「最近關注什麼航運新聞？」</h2></div>{completeButton("radar")}</div>
-            <blockquote>我近期特別關注荷姆茲海峽恢復通行後的後續影響。即使航道逐步重啟，燃油、保險與運輸合約成本不會立刻回到原點。對船公司而言，這會影響航線配置、附加費與船期穩定；對 GAM 而言，重點是把這些外部變化翻譯成客戶能採取的行動，例如提早訂艙、保留交期緩衝，並提供明確的更新節點。我認為這正反映業務不只是報價，而是協助客戶管理供應鏈不確定性。</blockquote>
+            <div className="chapter-title"><div><p className="eyebrow">60-SECOND BRIEF</p><h2>今天值得帶進面試的觀點</h2></div>{completeButton("radar")}</div>
+            <div className="brief-copy"><span>01</span><p>航道安全不是單一新聞，而是一條成本鏈：通行限制先推高油價與保險，再影響航線配置、附加費與交期。GAM 的角色，是把這條鏈轉成客戶可採取的訂艙與庫存決策。</p></div>
           </section>
-          <p className="editor-note">編輯說明：本區資料截至 2026.07.14；數字與事件以連結原始來源為準。面試時應說「根據目前公開資訊」，避免把預估當成既定事實。</p>
+          <p className="editor-note">編輯準則：優先採用官方機構、航商公告與具編採制度的國際媒體；相同事件只保留資訊最完整的一則。預測值會明確標示，不與已發生事實混用。</p>
         </div>
       )}
 
@@ -351,4 +318,4 @@ function PageIntro({ no, kicker, title, desc }: { no: string; kicker: string; ti
 function Timeline({ year, title, text }: { year: string; title: string; text: string }) { return <div><span>{year}</span><i /><section><strong>{title}</strong><p>{text}</p></section></div>; }
 function InfoCard({ n, title, text }: { n: string; title: string; text: string }) { return <article className="info-card"><span>{n}</span><h3>{title}</h3><p>{text}</p></article>; }
 function Inco({ code, seller, risk, text }: { code: string; seller: string; risk: string; text: string }) { return <div><strong>{code}</strong><p>{text}</p><span>賣方負擔：{seller}</span><span>風險移轉：{risk}</span></div>; }
-function InterviewBox({ question, answer }: { question: string; answer: string }) { return <section className="interview-box"><p className="eyebrow">INTERVIEW READY</p><h2>{question}</h2><div><span>建議回答</span><p>{answer}</p></div></section>; }
+function InterviewBox({ question, answer }: { question: string; answer: string }) { return <section className="interview-box"><p className="eyebrow">ANSWER DRAFT</p><h2>{question}</h2><div><span>回答稿</span><p>{answer}</p></div></section>; }
