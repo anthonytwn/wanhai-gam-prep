@@ -1,38 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const requestHeaders = await headers();
+  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
+  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+  const image = `${protocol}://${host}/og.png`;
+  return {
+    title: "WH Deck｜萬海 GAM 面試準備",
+    description: "顏文龍專屬的萬海航運 Global Account Manager 面試準備系統。",
+    icons: { icon: "/favicon.svg" },
+    openGraph: {
+      title: "WH Deck｜萬海 GAM 面試準備",
+      description: "把溝通力，轉成航運商業力。",
+      type: "website",
+      locale: "zh_TW",
+      images: [{ url: image, width: 1672, height: 941, alt: "WH Deck 萬海 GAM 面試準備" }],
+    },
+    twitter: { card: "summary_large_image", title: "WH Deck｜萬海 GAM 面試準備", description: "把溝通力，轉成航運商業力。", images: [image] },
+  };
+}
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Starter Project",
-  description: "A clean starting point for building your site.",
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-  },
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="zh-Hant"><body>{children}</body></html>;
 }
