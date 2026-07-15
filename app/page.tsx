@@ -31,7 +31,7 @@ const modules = [
   { id: "radar", title: "今日五則時事", time: "15 min", section: "news" as Section },
   { id: "aptitude", title: "適職計時 25 題", time: "25 min", section: "aptitude" as Section },
   { id: "professional", title: "專業科目 30 題", time: "30 min", section: "professional" as Section },
-  { id: "english", title: "English Checkpoint", time: "15 min", section: "english" as Section },
+  { id: "english", title: "English Checkpoint", time: "20 min", section: "english" as Section },
 ];
 
 const terms = [
@@ -361,7 +361,7 @@ export default function Home() {
 
       {active === "aptitude" && (
         <div className="page content-page quiz-page">
-          <PageIntro no="05" kicker="APTITUDE SPRINT" title="25 題，把速度切到考試模式" desc="數列、比例、速率、邏輯排序與文字推理各 5 題。記錄每題時間、錯題與錯因，卡住就先跳。" />
+          <PageIntro no="05" kicker="APTITUDE SPRINT" title="25 題，把速度切到考試模式" desc="數列、比例、速率、邏輯排序與圖形空間推理各 5 題。記錄每題時間、錯題與錯因，卡住就先跳。" />
           <QuizDeck title="適職計時測驗" questions={aptitudeQuestions} storageKey="wanhai-aptitude-results" limitMinutes={25} />
         </div>
       )}
@@ -375,9 +375,9 @@ export default function Home() {
 
       {active === "english" && (
         <div className="page content-page quiz-page">
-          <PageIntro no="07" kicker="ENGLISH CHECKPOINT" title="不是重學英文，是切換考試節奏" desc="20 個航運商務詞彙、10 題文法與克漏字，加上兩篇短篇閱讀。訓練快速定位陷阱。" />
+          <PageIntro no="07" kicker="ENGLISH CHECKPOINT" title="不是重學英文，是切換考試節奏" desc="20 個航運商務詞彙、10 題文法、兩篇短篇閱讀、shipping notice 與 5 題聽力情境文字稿。訓練快速定位陷阱。" />
           <section className="chapter vocab-section"><div className="chapter-title"><div><p className="eyebrow">VOCABULARY · 20</p><h2>航運商務必認字</h2></div></div><div className="vocab-grid">{shippingVocabulary.map(([word, meaning]) => <div key={word}><strong>{word}</strong><span>{meaning}</span></div>)}</div></section>
-          <QuizDeck title="英文快速測驗" questions={englishQuestions} storageKey="wanhai-english-results" limitMinutes={15} />
+          <QuizDeck title="英文快速測驗" questions={englishQuestions} storageKey="wanhai-english-results" limitMinutes={20} />
         </div>
       )}
 

@@ -45,11 +45,11 @@ export const aptitudeQuestions: QuizQuestion[] = [
   q("a19", "邏輯排序", "文件完成後才能報關；報關完成後才能進場。現在貨櫃已進場，可確定？", ["文件與報關均完成", "只有文件完成", "報關可能未完成", "無法判斷文件"], 0, "進場代表前置的文件與報關條件都已完成。"),
   q("a20", "邏輯排序", "四批貨 P、Q、R、S；P 在 Q 前，R 在 S 後。何者不可能？", ["P-Q-S-R", "S-P-R-Q", "P-S-Q-R", "Q-P-S-R"], 3, "Q-P 違反 P 必須在 Q 前。"),
 
-  q("a21", "文字推理", "公告：『若資料不完整，將不受理訂艙。』下列何者等價？", ["受理訂艙即可推知資料完整", "資料完整一定受理", "未受理一定是資料不完整", "資料不完整有時仍受理"], 0, "原命題的逆否命題為：若已受理，則資料完整。"),
-  q("a22", "文字推理", "『只有完成身分確認的人才能進入考場。』小林已進入考場，可推出？", ["小林一定通過考試", "小林已完成身分確認", "小林提早到場", "無法推論"], 1, "完成身分確認是進入考場的必要條件。"),
-  q("a23", "文字推理", "所有延誤案件都要通知客戶；此案件未通知客戶。最合理推論？", ["此案件沒有延誤", "此案件一定取消", "客戶已自行查詢", "通知系統故障"], 0, "依規則的逆否推論，未通知代表不屬於延誤案件。"),
-  q("a24", "文字推理", "『部分高價貨物需要保險』可確定下列何者？", ["所有高價貨物都需要保險", "至少一件高價貨物需要保險", "低價貨物都不需要保險", "需要保險的都是高價貨物"], 1, "『部分』表示至少存在一個符合條件的案例。"),
-  q("a25", "文字推理", "若船期穩定，客戶就提高出貨量；客戶沒有提高出貨量。依此可推論？", ["船期不穩定", "運價太高", "客戶沒有需求", "無法做任何推論"], 0, "依逆否命題，可推出船期並不穩定。"),
+  q("a21", "圖形空間推理", "箭頭依序旋轉：↑、→、↓、？", ["↗", "←", "↙", "↑"], 1, "箭頭每次順時針旋轉 90 度，因此下一個方向是向左。"),
+  q("a22", "圖形空間推理", "圖形規律：○、○○、○○○、？", ["○○", "○○○○", "●●●●", "○●○●"], 1, "每一步增加一個相同的空心圓，下一組為四個空心圓。"),
+  q("a23", "圖形空間推理", "方位序列：左上、右上、右下、？", ["左下", "左上", "右上", "中央"], 0, "位置沿正方形四角順時針移動，下一個位置是左下。"),
+  q("a24", "圖形空間推理", "將字母 L 順時針旋轉 180 度，長直線原本在左側，旋轉後會在？", ["左側", "右側", "上方", "位置不變"], 1, "旋轉 180 度後左右與上下同時對調，長直線會移到右側。"),
+  q("a25", "圖形空間推理", "矩陣規律：第一列為 △、□、△□；第二列為 ○、◇、？", ["○◇", "◇○", "△◇", "○□"], 0, "每列第三格都是前兩格依原順序合併，因此答案為 ○◇。"),
 ];
 
 const notes = (correct: number, reasons: string[]) => reasons.map((reason, index) => `${index === correct ? "正確" : "不選"}：${reason}`);
@@ -102,6 +102,7 @@ export const shippingVocabulary = [
 
 const passageA = "Due to congestion at the transshipment port, the vessel's estimated arrival has been postponed by two days. Customers should submit revised shipping instructions before 3:00 p.m. today. The carrier will provide another update tomorrow morning.";
 const passageB = "A manufacturer ships 12 containers every week. During peak season, container availability becomes tight, so the account manager recommends booking two weeks earlier and keeping one alternative sailing in the plan.";
+const shippingNotice = "SHIPPING NOTICE — Voyage WH218E will omit Port Klang because of berth congestion. Cargo booked for Port Klang will be transferred to voyage WH220E. The revised ETD is Friday, 18 July. Customers who cannot accept the change should contact Customer Service by 12:00 noon tomorrow.";
 
 export const englishQuestions: QuizQuestion[] = [
   q("e01", "Grammar & Cloze", "The customer asked whether the quotation ___ the fuel surcharge.", ["include", "includes", "including", "included to"], 1, "The singular subject ‘quotation’ takes ‘includes’."),
@@ -118,4 +119,10 @@ export const englishQuestions: QuizQuestion[] = [
   q("e12", "Reading A", "What must customers do today?", ["Pay demurrage", "Change the consignee", "Submit revised shipping instructions", "Cancel the booking"], 2, "Customers must submit revised SI before 3:00 p.m.", undefined, passageA),
   q("e13", "Reading B", "What problem is expected during peak season?", ["A shortage of containers", "Lower weekly demand", "No customs office", "A change of currency"], 0, "The passage says container availability becomes tight.", undefined, passageB),
   q("e14", "Reading B", "What does the account manager recommend?", ["Ship without a booking", "Book earlier and keep an alternative sailing", "Reduce all prices", "Use only one sailing"], 1, "The recommendation combines earlier booking with a backup sailing.", undefined, passageB),
+  q("e15", "Shipping Notice", "What should a customer do if the revised sailing is unacceptable?", ["Wait until Friday", "Contact Customer Service by noon tomorrow", "Send the cargo to another port", "Pay a congestion surcharge"], 1, "The notice gives a clear action and deadline: contact Customer Service by 12:00 noon tomorrow.", undefined, shippingNotice),
+  q("e16", "Listening Scenario", "What is the caller asking for?", ["A lower freight rate", "A revised arrival estimate", "A new container size", "A customs refund"], 1, "The caller asks when the delayed cargo is now expected to arrive.", undefined, "Caller: Our cargo missed the connection in Singapore. Could you tell me the revised arrival estimate for Kaohsiung?"),
+  q("e17", "Listening Scenario", "What will the speaker do next?", ["Cancel the booking", "Check space with Operations", "Issue the bill of lading", "Pay the duty"], 1, "The speaker explicitly says she will check space with Operations and reply before 4 p.m.", undefined, "Account manager: I don't want to promise space before it is confirmed. I'll check with Operations and get back to you before four this afternoon."),
+  q("e18", "Listening Scenario", "Why must the customer act today?", ["The vessel has arrived", "The documentation cut-off is this evening", "The freight rate expires next month", "The office is moving"], 1, "The same-day action is driven by the 6 p.m. documentation cut-off.", undefined, "Service agent: Please send the corrected consignee details today. The documentation cut-off is six p.m., and late amendments may incur a fee."),
+  q("e19", "Listening Scenario", "What is the main operational problem?", ["No empty containers are available", "The port is closed permanently", "The invoice is incorrect", "The cargo is overweight"], 0, "The depot cannot release empty containers until Thursday.", undefined, "Depot staff: We have no empty forty-foot containers available today. The next release is expected on Thursday morning."),
+  q("e20", "Listening Scenario", "What solution does the account manager suggest?", ["Use a later sailing only", "Split the shipment between two sailings", "Change the product", "Ignore the deadline"], 1, "The proposal is to protect the urgent volume now and place the balance on the following vessel.", undefined, "Account manager: We can protect ten containers on Wednesday's sailing and move the remaining six on the next vessel. Would that split plan work for your production schedule?"),
 ];

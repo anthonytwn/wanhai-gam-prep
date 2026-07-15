@@ -35,7 +35,10 @@ test("ships complete quiz data and GitHub Pages source adapter", async () => {
   ]);
   assert.equal((quizData.match(/q\("a\d{2}"/g) ?? []).length, 25);
   assert.equal((quizData.match(/q\("p\d{2}"/g) ?? []).length, 30);
-  assert.equal((quizData.match(/q\("e\d{2}"/g) ?? []).length, 14);
+  assert.equal((quizData.match(/q\("e\d{2}"/g) ?? []).length, 20);
+  assert.match(quizData, /圖形空間推理/);
+  assert.match(quizData, /Shipping Notice/);
+  assert.equal((quizData.match(/"Listening Scenario"/g) ?? []).length, 5);
   assert.match(page, /wanhai-official-checklist/);
   assert.match(page, /wanhai-term-familiarity/);
   assert.match(page, /重做錯題/);
