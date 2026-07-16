@@ -48,6 +48,9 @@ test("ships complete content, question banks and GitHub Pages adapter", async ()
   assert.match(page, /WEAKNESS DASHBOARD/);
   assert.match(page, /模擬考模式/);
   assert.match(page, /近五年國際航運大事/);
+  assert.match(page, /LAST CURATED UPDATE · 2026\.07\.16 08:00 TPE/);
+  assert.match(page, /EDITOR'S OVERVIEW/);
+  assert.match(page, /UPDATED 2026\.07\.16/);
   assert.match(page, /重做錯題/);
   assert.match(css, /quiz-results/);
   assert.match(pagesEntry, /import Home from "\.\.\/app\/page"/);
